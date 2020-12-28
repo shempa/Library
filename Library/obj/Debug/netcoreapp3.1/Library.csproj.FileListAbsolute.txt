@@ -69,3 +69,6 @@ C:\проекты C#\Library\Library\obj\Debug\netcoreapp3.1\Razor\View\Books\Ge
 C:\проекты C#\Library\Library\obj\Debug\netcoreapp3.1\Library.RazorTargetAssemblyInfo.cs
 C:\проекты C#\Library\Library\obj\Debug\netcoreapp3.1\Library.Views.pdb
 C:\проекты C#\Library\Library\obj\Debug\netcoreapp3.1\Library.csprojAssemblyReference.cache
+C:\проекты C#\Library\Library\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\проекты C#\Library\Library\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\проекты C#\Library\Library\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

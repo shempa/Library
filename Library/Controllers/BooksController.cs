@@ -44,9 +44,10 @@ namespace WebAPIApp.Controllers
         public async Task<ActionResult<Book>> Post(Book book)
         {
             if (book == null)
-            {
                 return BadRequest();
-            }
+
+            if (book.Name == "")
+                return BadRequest();
 
             db.Books.Add(book);
             await db.SaveChangesAsync();
@@ -58,13 +59,13 @@ namespace WebAPIApp.Controllers
         public async Task<ActionResult<Book>> Put(Book book)
         {
             if (book == null)
-            {
                 return BadRequest();
-            }
+
+            if (db.Books.Where(x => x.Id = book.Id && x.UserId = book.UserId))
+                book.UserId = null;
+
             if (!db.Books.Any(x => x.Id == book.Id))
-            {
                 return NotFound();
-            }
 
             db.Update(book);
             await db.SaveChangesAsync();

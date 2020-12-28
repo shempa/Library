@@ -30,6 +30,8 @@ namespace Library
             services.AddDbContext<Library.Models.LibraryContext>(options => options.UseSqlServer(con));
             //services.AddControllersWithViews();
             services.AddControllers(); // используем контроллеры без представлений
+            services.AddControllers().AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
         public void Configure(IApplicationBuilder app)
         {
@@ -42,8 +44,12 @@ namespace Library
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers(); // подключаем маршрутизацию на контроллеры
+                //endpoints.MapControllers(); // подключаем маршрутизацию на контроллеры
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Users}/{action=Get}/{id?}");
             });
         }
+
     }
 }

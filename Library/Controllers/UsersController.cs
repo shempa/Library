@@ -10,7 +10,7 @@ namespace Library.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
         LibraryContext db;
         public UsersController(LibraryContext context)
@@ -27,7 +27,7 @@ namespace Library.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> Get()
         {
-            return await db.Users.ToListAsync();
+            return await db.Users.Include(i => i.Books).ToListAsync();
         }
 
         // GET api/users/5
@@ -45,9 +45,10 @@ namespace Library.Controllers
         public async Task<ActionResult<User>> Post(User user)
         {
             if (user == null)
-            {
                 return BadRequest();
-            }
+
+            if (user.Name == "")
+                return BadRequest();
 
             db.Users.Add(user);
             await db.SaveChangesAsync();

@@ -10,10 +10,6 @@ namespace Library.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsActiv { get; set; }
-        public ICollection<Book> Books { get; set; }
-        public User()
-        {
-            Books = new List<Book>();
-        }
+        public List<Book> Books { get; set; } = new List<Book>();
     }
 }
