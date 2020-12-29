@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Книги пользователя</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form name="infoForm">
+        <div class="panel-body">
+            <button id="transition" class="btn btn-primary" onclick="window.location.href = '/getusers.html'">Перейти к списку читателей</button>
+            <button id="transition" class="btn btn-primary" onclick="window.location.href = '/getbooks.html'">Перейти к списку книг</button>
+        </div>
+        <h2>Список книг читателя</h2>
+        <div>
+            <label> id= </label>
+            <input name="userId" value="2" disabled="disabled" />
+        </div>
+    </form>
+    <table class="table table-condensed table-striped  col-md-6">
+        <thead><tr><th>Id</th><th>Название</th></tr></thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        async function GetInfo() {
+            const form = document.forms["infoForm"];
+            const userId = form.elements["userId"].value;
+            const response = await fetch("/api/info/" + userId, {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const books = await response.json();
+                let rows = document.querySelector("tbody");
+                books.forEach(book => {
+                    rows.append(row(book));
+                });
+            }
+        }
+
+        function row(book) {
+            const tr = document.createElement("tr");
+            tr.setAttribute("data-rowid", book.id);
+
+            const idTd = document.createElement("td");
+            idTd.append(book.id);
+            tr.append(idTd);
+
+            const nameTd = document.createElement("td");
+            nameTd.append(book.name);
+            tr.append(nameTd);
+
+            const linksTd = document.createElement("td");
+            tr.appendChild(linksTd);
+
+            return tr;
+        }
+
+        GetInfo();
+
+    </script>
+</body>
+</html>

@@ -10,14 +10,19 @@
     <h2>Список книг</h2>
     <form name="bookForm">
         <input type="hidden" name="id" value="0" />
-        <input type="hidden" name="userId"/>
         <div class="form-group col-md-5">
             <label for="name">Название:</label>
             <input class="form-control" name="name" />
         </div>
         <div class="panel-body">
             <button type="submit" id="submit" class="btn btn-primary">Сохранить книгу</button>
+            <button id="transition" class="btn btn-primary" onclick="window.location.href = '/getusers.html'">Перейти к списку читателей</button>
             <a id="reset" class="btn btn-primary">Сбросить</a>
+        </div>
+        <br>
+        <div class="form-control">
+            <label for="userId"> Id читателя для брони книги</label>
+            <input name="userId" />
         </div>
     </form>
     <table class="table table-condensed table-striped  col-md-6">
@@ -99,13 +104,19 @@
         }
 
         async function ReserveBook(book) {
+            const form = document.forms["bookForm"];
+            const userIdN = form.elements["userId"].value;
+            if (book.userId != null)
+                userId = null;
+            else
+                userId = userIdN;    //  !!!!!!!!!!!! костыль убрать после авторизации
             const response = await fetch("api/books", {
                 method: "PUT",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
                     id: parseInt(book.id, 10),
                     name: book.name,
-                    userId: 11  //  !!!!!!!!!!!! костыль убрать после авторизации
+                    userId: userId  
                 })
             });
             if (response.ok === true) {

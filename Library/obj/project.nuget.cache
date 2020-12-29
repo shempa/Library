@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "PzCrNh/kzA0l7Kju+xDTWOWDU9gjwcmUGk4FPVKZevj5x03KBOQUvvIVN85niSYoV9/MtLQBJ+swlPPSFfKGSA==",
+  "dgSpecHash": "NU+oc199P3+qmQcUL/+iBYDbKtUNtF9p4qq2XAzTV+hBgzdp+GE53i5H39F+sp4ls7O/9aOw7AjS55z754B/qQ==",
   "success": true,
   "projectFilePath": "C:\\проекты C#\\Library\\Library\\Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Павел\\.nuget\\packages\\jquery\\1.9.1\\jquery.1.9.1.nupkg.sha512",
     "C:\\Users\\Павел\\.nuget\\packages\\kendouicore\\2020.3.1118\\kendouicore.2020.3.1118.nupkg.sha512",
     "C:\\Users\\Павел\\.nuget\\packages\\kendouiweb\\2014.1.318\\kendouiweb.2014.1.318.nupkg.sha512",
+    "C:\\Users\\Павел\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.0.2\\microsoft.aspnetcore.authentication.jwtbearer.3.0.2.nupkg.sha512",
     "C:\\Users\\Павел\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
     "C:\\Users\\Павел\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",
     "C:\\Users\\Павел\\.nuget\\packages\\microsoft.csharp\\4.6.0\\microsoft.csharp.4.6.0.nupkg.sha512",

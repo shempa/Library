@@ -26,6 +26,7 @@
         "dependencies": {
           "KendoUICore": "2020.3.1118",
           "KendoUIWeb": "2014.1.318",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "3.0.2",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.1",
@@ -316,6 +317,20 @@
       "KendoUIWeb/2014.1.318": {
         "dependencies": {
           "jQuery": "1.9.1"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/3.0.2": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.6.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.219.61507"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
         }
       },
       "Microsoft.AspNetCore.JsonPatch/3.0.0": {
@@ -2985,6 +3000,13 @@
       "sha512": "sha512-JXMjMB0HfhM1qK+pY1r9GmmWfkGZTBLuvktPx00+SZ85IdiyyyOyBUpJk01pHY8UdfYpb6Qrj9aCKFz3IXGaxA==",
       "path": "kendouiweb/2014.1.318",
       "hashPath": "kendouiweb.2014.1.318.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6hpGqdEGqlp7dBHkCxUpjZ4tEGTawA9O5sbC20u02llznNu992aG5ffxKIrKorv/dorybDCFnyNVLygvfR+RlQ==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/3.0.2",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.3.0.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.JsonPatch/3.0.0": {
       "type": "package",

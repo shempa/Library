@@ -15,12 +15,6 @@ namespace WebAPIApp.Controllers
         public BooksController(LibraryContext context)
         {
             db = context;
-            if (!db.Books.Any())
-            {
-                db.Books.Add(new Book { Name = "Tom"});
-                db.Books.Add(new Book { Name = "Alice"});
-                db.SaveChanges();
-            }
         }
 
         [HttpGet]
@@ -60,9 +54,6 @@ namespace WebAPIApp.Controllers
         {
             if (book == null)
                 return BadRequest();
-
-            if (db.Books.Where(x => x.Id = book.Id && x.UserId = book.UserId))
-                book.UserId = null;
 
             if (!db.Books.Any(x => x.Id == book.Id))
                 return NotFound();

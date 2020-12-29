@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Library
 {
@@ -32,7 +34,34 @@ namespace Library
             services.AddControllers(); // используем контроллеры без представлений
             services.AddControllers().AddNewtonsoftJson(options =>
                  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.RequireHttpsMetadata = false;
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            // укзывает, будет ли валидироваться издатель при валидации токена
+                            ValidateIssuer = true,
+                            // строка, представляющая издателя
+                            ValidIssuer = AuthOptions.ISSUER,
+
+                            // будет ли валидироваться потребитель токена
+                            ValidateAudience = true,
+                            // установка потребителя токена
+                            ValidAudience = AuthOptions.AUDIENCE,
+                            // будет ли валидироваться время существования
+                            ValidateLifetime = true,
+
+                            // установка ключа безопасности
+                            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+                            // валидация ключа безопасности
+                            ValidateIssuerSigningKey = true,
+                        };
+                    });
+            services.AddControllersWithViews();
         }
+
         public void Configure(IApplicationBuilder app)
         {
             app.UseDeveloperExceptionPage();
@@ -42,14 +71,24 @@ namespace Library
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllers(); // подключаем маршрутизацию на контроллеры
-                endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Users}/{action=Get}/{id?}");
+                endpoints.MapDefaultControllerRoute();
             });
         }
-
     }
 }
+/*
+    app.UseEndpoints(endpoints =>
+    {
+        //endpoints.MapControllers(); // подключаем маршрутизацию на контроллеры
+        endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Users}/{action=Get}/{id?}");
+    });
+*/
+
+

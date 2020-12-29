@@ -16,12 +16,6 @@ namespace Library.Controllers
         public UsersController(LibraryContext context)
         {
             db = context;
-            if (!db.Users.Any())
-            {
-                db.Users.Add(new User { Name = "Tom"});
-                db.Users.Add(new User { Name = "Alice"});
-                db.SaveChanges();
-            }
         }
 
         [HttpGet]
