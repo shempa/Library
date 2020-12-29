@@ -19,7 +19,7 @@
             <input type="checkbox" name="isActiv" id="isActiv" />
         </div>
         <div class="panel-body">
-            <button type="submit" id="submit" class="btn btn-primary">Сохранить</button>
+            <button type="submit" id="submit" class="btn btn-primary">Добавить читателя</button>
             <button id="transition" class="btn btn-primary" onclick="window.location.href = '/getbooks.html'">Перейти к списку книг</button>
             <a id="reset" class="btn btn-primary">Сбросить</a>
         </div>
@@ -107,6 +107,10 @@
             }
         }
 
+        async function GetInfo(id) {
+            window.location.href = '/getinfo.html?id='+id;
+        }
+
         // сброс формы
         function reset() {
             const form = document.forms["userForm"];
@@ -119,9 +123,15 @@
             const tr = document.createElement("tr");
             tr.setAttribute("data-rowid", user.id);
 
-            const idTd = document.createElement("td");
-            idTd.append(user.id);
-            tr.append(idTd);
+            const pushIdLink = document.createElement("a");
+            pushIdLink.setAttribute("style", "cursor:pointer;padding:15px;");
+            pushIdLink.append(user.id);
+            pushIdLink.addEventListener("click", e => {
+
+                e.preventDefault();
+                GetInfo(user.id);
+            });
+            tr.append(pushIdLink);
 
             const nameTd = document.createElement("td");
             nameTd.append(user.name);

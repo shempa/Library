@@ -18,13 +18,10 @@ namespace Library.Controllers
             db = context;
         }
 
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<IEnumerable<Book>>> GetInfo(int userId)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetInfo(int id)
         {
-            var book = await db.Books.Where(x => x.UserId == userId).ToListAsync();
-            if (book == null)
-                return NotFound();
-            return new ObjectResult(book);
+            return await db.Books.Where(x => x.UserId == id).ToListAsync();
         }
     }
 }
